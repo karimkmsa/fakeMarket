@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Ubuntu', 'ui-sans-serif', 'system-ui', 'sans-serif'] } } }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+ 
+  <!-- ===== HEADER ===== -->
+  <header class="sticky top-0 z-30 bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+      <a href="#" class="text-xl font-bold text-indigo-600">Mini<span class="text-gray-800">Market</span></a>
+ 
+      <!-- Search -->
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search products..."
+        class="flex-1 rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
+ 
+  
+    </div>
+  </header>
+ 
+  <!-- ===== HERO ===== -->
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <h1 class="text-3xl font-bold">Everything you need, in one place</h1>
+      <p class="mt-2 text-indigo-100">Browse our latest products and add your favorites to the cart.</p>
+    </div>
+  </section>
+ 
+  <main class="max-w-6xl mx-auto px-4 py-8">
+ 
+    <div id="categories" class="mb-6 flex flex-wrap gap-2">
+      <button data-category="all" class="rounded-full bg-indigo-600 px-4 py-1.5 text-sm text-white">All</button>
+    </div>
+ 
+    <p id="loading" class="py-20 text-center text-gray-500">Loading products...</p>
+ 
+    <p id="empty" class="hidden py-20 text-center text-gray-500">No products found.</p>
+ 
+    <div id="productsGrid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+  </main>
+ 
+  
+  <template id="productTemplate">
+    <article class="flex flex-col overflow-hidden rounded-xl bg-white shadow transition hover:shadow-lg">
+      <div class="flex h-48 items-center justify-center bg-white p-4">
+        <img data-field="image" src="" alt="" class="max-h-full object-contain" />
+      </div>
+      <div class="flex flex-1 flex-col gap-2 border-t p-4">
+        <span data-field="category" class="text-xs uppercase tracking-wide text-indigo-500"></span>
+        <h3 data-field="title" class="line-clamp-2 text-sm font-semibold"></h3>
+        <p data-field="rating" class="text-xs text-yellow-500"></p>
+        <div class="mt-auto flex items-center justify-between pt-2">
+          <span data-field="price" class="text-lg font-bold"></span>
+          <button data-field="add" class="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm text-white hover:bg-indigo-700">
+            Add
+          </button>
+        </div>
+      </div>
+    </article>
+  </template>
+ 
+
+  <div id="overlay" class="fixed inset-0 z-40 hidden bg-black/40"></div>
+ 
+
+ 
+
+ 
+  <footer class="mt-10 border-t bg-white py-6 text-center text-sm text-gray-500">
+    &copy; 2026 MiniMarket. Data from fakestoreapi.com
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
